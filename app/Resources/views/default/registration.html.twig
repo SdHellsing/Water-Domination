@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <form action="{{ path('user_check_register')}}" method="POST" >
+        <input type="text" name="username" value="{{ username }}" /> <br>
+        <input type="text" name="age" value="{{ age }}" /> <br>
+        <input type="text" name="email" value="{{ email }}" /> <br>
+        <input type="text" name="password" value="{{ password }}" /> <br>
+        <button type="submit" value="Submit">Submit</button>
+    </form>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+

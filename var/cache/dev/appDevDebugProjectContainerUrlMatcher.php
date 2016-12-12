@@ -109,6 +109,25 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
         }
 
+        if (0 === strpos($pathinfo, '/user')) {
+            // user_login
+            if ($pathinfo === '/user/register') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::userRegister',  '_route' => 'user_login',);
+            }
+
+            // user_check_register
+            if ($pathinfo === '/user/checkregister') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_user_check_register;
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::userRegisterProcess',  '_route' => 'user_check_register',);
+            }
+            not_user_check_register:
+
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }
