@@ -101,17 +101,13 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         // homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'homepage');
-            }
-
+        if ($pathinfo === '/index/home') {
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
         }
 
         if (0 === strpos($pathinfo, '/user')) {
             // user_login
-            if ($pathinfo === '/user/register') {
+            if ($pathinfo === '/users/register') {
                 return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::userRegister',  '_route' => 'user_login',);
             }
 
@@ -125,6 +121,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::userRegisterProcess',  '_route' => 'user_check_register',);
             }
             not_user_check_register:
+
+            // get_one_user
+            if (0 === strpos($pathinfo, '/users') && preg_match('#^/users/(?P<id>[^/]++)/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'get_one_user')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::userView',));
+            }
 
         }
 

@@ -22,63 +22,76 @@ class __TwigTemplate_ecb3b7dc7a05ccf4c8a2a6413e2ed68ab783cc50ee4dd09631d9b491f2b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_0c1d581a03d401c33e8d574e54a6bfaecc6f0bc26bc353f5baf669242e85aef5 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_0c1d581a03d401c33e8d574e54a6bfaecc6f0bc26bc353f5baf669242e85aef5->enter($__internal_0c1d581a03d401c33e8d574e54a6bfaecc6f0bc26bc353f5baf669242e85aef5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/registration.html.twig"));
+        $__internal_57ddcfc0f235a050890cbfeebac44df90bb16bbf1352da0b3cd89364f7c53bfc = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_57ddcfc0f235a050890cbfeebac44df90bb16bbf1352da0b3cd89364f7c53bfc->enter($__internal_57ddcfc0f235a050890cbfeebac44df90bb16bbf1352da0b3cd89364f7c53bfc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/registration.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_0c1d581a03d401c33e8d574e54a6bfaecc6f0bc26bc353f5baf669242e85aef5->leave($__internal_0c1d581a03d401c33e8d574e54a6bfaecc6f0bc26bc353f5baf669242e85aef5_prof);
+        $__internal_57ddcfc0f235a050890cbfeebac44df90bb16bbf1352da0b3cd89364f7c53bfc->leave($__internal_57ddcfc0f235a050890cbfeebac44df90bb16bbf1352da0b3cd89364f7c53bfc_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_be69d14734d6e5a3b6a871c66081323dc8ebcd1d8fa712baed306d6f9b6fe3a6 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_be69d14734d6e5a3b6a871c66081323dc8ebcd1d8fa712baed306d6f9b6fe3a6->enter($__internal_be69d14734d6e5a3b6a871c66081323dc8ebcd1d8fa712baed306d6f9b6fe3a6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_4efd4f151c3a7acb21cbaf2868e7fa8acdf3bd8125e2a1e2b7ddd245df5f9ee7 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_4efd4f151c3a7acb21cbaf2868e7fa8acdf3bd8125e2a1e2b7ddd245df5f9ee7->enter($__internal_4efd4f151c3a7acb21cbaf2868e7fa8acdf3bd8125e2a1e2b7ddd245df5f9ee7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "
+        echo "<h3> Hey brah, you succeeded! </h3>
+
     <form action=\"";
-        // line 5
+        // line 6
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("user_check_register");
         echo "\" method=\"POST\" >
+
         <input type=\"text\" name=\"username\" value=\"";
-        // line 6
-        echo twig_escape_filter($this->env, ($context["username"] ?? $this->getContext($context, "username")), "html", null, true);
-        echo "\" /> <br>
-        <input type=\"text\" name=\"age\" value=\"";
-        // line 7
-        echo twig_escape_filter($this->env, ($context["age"] ?? $this->getContext($context, "age")), "html", null, true);
-        echo "\" /> <br>
-        <input type=\"text\" name=\"email\" value=\"";
         // line 8
-        echo twig_escape_filter($this->env, ($context["email"] ?? $this->getContext($context, "email")), "html", null, true);
+        echo twig_escape_filter($this->env, ($context["username"] ?? $this->getContext($context, "username")), "html", null, true);
         echo "\" /> <br>
         <input type=\"text\" name=\"password\" value=\"";
         // line 9
         echo twig_escape_filter($this->env, ($context["password"] ?? $this->getContext($context, "password")), "html", null, true);
         echo "\" /> <br>
         <button type=\"submit\" value=\"Submit\">Submit</button>
+
     </form>
 
-";
-        
-        $__internal_be69d14734d6e5a3b6a871c66081323dc8ebcd1d8fa712baed306d6f9b6fe3a6->leave($__internal_be69d14734d6e5a3b6a871c66081323dc8ebcd1d8fa712baed306d6f9b6fe3a6_prof);
-
-    }
-
-    // line 15
-    public function block_stylesheets($context, array $blocks = array())
-    {
-        $__internal_ac0809889070a9e2205a731c6e763deca67b9f6785189154a70f43eb4d55a786 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_ac0809889070a9e2205a731c6e763deca67b9f6785189154a70f43eb4d55a786->enter($__internal_ac0809889070a9e2205a731c6e763deca67b9f6785189154a70f43eb4d55a786_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
-
-        // line 16
+    ";
+        // line 14
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(($context["ids"] ?? $this->getContext($context, "ids")));
+        foreach ($context['_seq'] as $context["_key"] => $context["id"]) {
+            // line 15
+            echo "        <p><a href=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("get_one_user", array("id" => $context["id"], "name" => "Pesho")), "html", null, true);
+            echo "\">ID: ";
+            echo twig_escape_filter($this->env, $context["id"], "html", null, true);
+            echo "</a> </p>
+    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['id'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 17
         echo "
 ";
         
-        $__internal_ac0809889070a9e2205a731c6e763deca67b9f6785189154a70f43eb4d55a786->leave($__internal_ac0809889070a9e2205a731c6e763deca67b9f6785189154a70f43eb4d55a786_prof);
+        $__internal_4efd4f151c3a7acb21cbaf2868e7fa8acdf3bd8125e2a1e2b7ddd245df5f9ee7->leave($__internal_4efd4f151c3a7acb21cbaf2868e7fa8acdf3bd8125e2a1e2b7ddd245df5f9ee7_prof);
+
+    }
+
+    // line 20
+    public function block_stylesheets($context, array $blocks = array())
+    {
+        $__internal_87ecbd4f49479361df9598ee96e1a125fe25ae894156d4b48c033c8c6b7ab6a3 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_87ecbd4f49479361df9598ee96e1a125fe25ae894156d4b48c033c8c6b7ab6a3->enter($__internal_87ecbd4f49479361df9598ee96e1a125fe25ae894156d4b48c033c8c6b7ab6a3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
+
+        // line 21
+        echo "
+";
+        
+        $__internal_87ecbd4f49479361df9598ee96e1a125fe25ae894156d4b48c033c8c6b7ab6a3->leave($__internal_87ecbd4f49479361df9598ee96e1a125fe25ae894156d4b48c033c8c6b7ab6a3_prof);
 
     }
 
@@ -94,7 +107,7 @@ class __TwigTemplate_ecb3b7dc7a05ccf4c8a2a6413e2ed68ab783cc50ee4dd09631d9b491f2b
 
     public function getDebugInfo()
     {
-        return array (  78 => 16,  72 => 15,  60 => 9,  56 => 8,  52 => 7,  48 => 6,  44 => 5,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  91 => 21,  85 => 20,  77 => 17,  66 => 15,  62 => 14,  54 => 9,  50 => 8,  45 => 6,  41 => 4,  35 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -110,14 +123,19 @@ class __TwigTemplate_ecb3b7dc7a05ccf4c8a2a6413e2ed68ab783cc50ee4dd09631d9b491f2b
         return new Twig_Source("{% extends 'base.html.twig' %}
 
 {% block body %}
+<h3> Hey brah, you succeeded! </h3>
 
     <form action=\"{{ path('user_check_register')}}\" method=\"POST\" >
+
         <input type=\"text\" name=\"username\" value=\"{{ username }}\" /> <br>
-        <input type=\"text\" name=\"age\" value=\"{{ age }}\" /> <br>
-        <input type=\"text\" name=\"email\" value=\"{{ email }}\" /> <br>
         <input type=\"text\" name=\"password\" value=\"{{ password }}\" /> <br>
         <button type=\"submit\" value=\"Submit\">Submit</button>
+
     </form>
+
+    {% for id in ids %}
+        <p><a href=\"{{ path(\"get_one_user\", {id: id, name: 'Pesho'}) }}\">ID: {{ id }}</a> </p>
+    {% endfor %}
 
 {% endblock %}
 

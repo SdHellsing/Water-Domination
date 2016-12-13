@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/index/home", name="homepage")
      */
     public function indexAction(Request $request)
     {
@@ -24,15 +24,14 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("user/register", name="user_login")
+     * @Route("/users/register", name="user_login")
      */
     public function userRegister()
     {
         return $this->render('default/registration.html.twig', [
             "username" => "Simon",
-            "age" => "21",
-            "email" => "chris@fastcomet.com",
-            "password" => "pass123"
+            "password" => "pass123",
+            "ids" => [1,4,6,7,55,44]
         ]);
     }
 
@@ -47,5 +46,13 @@ class DefaultController extends Controller
         exit;
     }
 
+    /**
+     * @Route("/users/{id}/{name}", name="get_one_user")
+     * @param $id
+     */
+    public function userView($id, $name)
+    {
+        return $this->redirectToRoute("homepage");
+    }
 
 }
