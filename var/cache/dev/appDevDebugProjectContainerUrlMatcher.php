@@ -100,45 +100,58 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'homepage');
-            }
-
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
-        }
-
         if (0 === strpos($pathinfo, '/users')) {
             if (0 === strpos($pathinfo, '/users/register')) {
-                // user_login
+                // users_register
                 if ($pathinfo === '/users/register') {
                     if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_user_login;
+                        goto not_users_register;
                     }
 
-                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::register',  '_route' => 'user_login',);
+                    return array (  '_controller' => 'AppBundle\\Controller\\UserController::register',  '_route' => 'users_register',);
                 }
-                not_user_login:
+                not_users_register:
 
-                // user_check_register
+                // user_register_post
                 if ($pathinfo === '/users/register') {
                     if ($this->context->getMethod() != 'POST') {
                         $allow[] = 'POST';
-                        goto not_user_check_register;
+                        goto not_user_register_post;
                     }
 
-                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::userRegisterProcess',  '_route' => 'user_check_register',);
+                    return array (  '_controller' => 'AppBundle\\Controller\\UserController::registerPost',  '_route' => 'user_register_post',);
                 }
-                not_user_check_register:
+                not_user_register_post:
 
             }
 
-            // get_one_user
-            if (preg_match('#^/users/(?P<id>[^/]++)/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'get_one_user')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::userView',));
+            // users_all
+            if ($pathinfo === '/users/all') {
+                return array (  '_controller' => 'AppBundle\\Controller\\UserController::all',  '_route' => 'users_all',);
             }
+
+            // users_edit
+            if (preg_match('#^/users/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_users_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'users_edit')), array (  '_controller' => 'AppBundle\\Controller\\UserController::edit',));
+            }
+            not_users_edit:
+
+            // users_edit_post
+            if (preg_match('#^/users/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_users_edit_post;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'users_edit_post')), array (  '_controller' => 'AppBundle\\Controller\\UserController::editPost',));
+            }
+            not_users_edit_post:
 
         }
 
