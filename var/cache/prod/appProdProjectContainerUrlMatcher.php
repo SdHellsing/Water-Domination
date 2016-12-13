@@ -36,22 +36,33 @@ class appProdProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBundle\R
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
         }
 
-        if (0 === strpos($pathinfo, '/user/register')) {
+        if (0 === strpos($pathinfo, '/user')) {
             // user_login
-            if ($pathinfo === '/user/register') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::userRegister',  '_route' => 'user_login',);
-            }
-
-            // user_registration_post
-            if ($pathinfo === '/user/register') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_user_registration_post;
+            if ($pathinfo === '/users/register') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_user_login;
                 }
 
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::userRegisterProcess',  '_route' => 'user_registration_post',);
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::register',  '_route' => 'user_login',);
             }
-            not_user_registration_post:
+            not_user_login:
+
+            // user_check_register
+            if ($pathinfo === '/user/register') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_user_check_register;
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::userRegisterProcess',  '_route' => 'user_check_register',);
+            }
+            not_user_check_register:
+
+            // get_one_user
+            if (0 === strpos($pathinfo, '/users') && preg_match('#^/users/(?P<id>[^/]++)/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'get_one_user')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::userView',));
+            }
 
         }
 

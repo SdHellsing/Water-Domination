@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\DTO\UserRegisterBindingModel;
+use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -25,25 +27,40 @@ class DefaultController extends Controller
 
     /**
      * @Route("/users/register", name="user_login")
+     * @Method("GET")
      */
-    public function userRegister()
+    public function register()
     {
+        $model = new UserRegisterBindingModel();
+        $model->setUsername("Devil");
+        $model->setPassword("666");
+
+        $form = $this->createForm(UserType::class, $model);
+
         return $this->render('default/registration.html.twig', [
-            "username" => "Simon",
-            "password" => "pass123",
-            "ids" => [1,4,6,7,55,44]
+            'form' => $form ->createView()
         ]);
     }
 
     /**
-     * @Route("/user/checkregister", name="user_check_register")
+     * @Route("/users/register", name="user_check_register")
      * @Method("POST")
      */
 
     public function userRegisterProcess( Request $request)
     {
-        var_dump($request -> get('username'));
-        exit;
+
+        $form = $this ->createForm(UserType::class);
+        $form->handleRequest($request);
+
+        if($form->isValid()){
+            $model = $form->getData();
+            var_dump($model);
+            echo 'Congratz! The form is valid!';
+
+        }else{
+            echo 'Error! The form you have submitted is invalid!';
+        }
     }
 
     /**

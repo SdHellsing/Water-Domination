@@ -1,19 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h3> Hey brah, you succeeded! </h3>
+<h3> Let's register </h3>
 
-    <form action="{{ path('user_check_register')}}" method="POST" >
+    {{ form_start(form) }}
+    <div>
+        {{ form_label(form.username) }}
+        {{ form_widget(form.username) }}
+    </div>
+    <div>
+        {{ form_widget(form.password) }}
+    </div>
+    <div>
+        <input type="submit" value="Register" />
+    </div>
+    {{ form_end(form) }}
 
-        <input type="text" name="username" value="{{ username }}" /> <br>
-        <input type="text" name="password" value="{{ password }}" /> <br>
-        <button type="submit" value="Submit">Submit</button>
-
-    </form>
-
-    {% for id in ids %}
-        <p><a href="{{ path("get_one_user", {id: id, name: 'Pesho'}) }}">ID: {{ id }}</a> </p>
-    {% endfor %}
 
 {% endblock %}
 
