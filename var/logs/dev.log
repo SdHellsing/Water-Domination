@@ -138,3 +138,6 @@
 [2016-12-13 17:04:43] request.INFO: Matched route "{route}". {"route":"homepage","route_parameters":{"_controller":"AppBundle\\Controller\\DefaultController::indexAction","_route":"homepage"},"request_uri":"http://dev.water-domination.com:8000/index/home","method":"GET"} []
 [2016-12-13 17:04:43] security.INFO: Populated the TokenStorage with an anonymous Token. [] []
 [2016-12-13 17:04:43] request.INFO: Matched route "{route}". {"route":"_wdt","route_parameters":{"_controller":"web_profiler.controller.profiler:toolbarAction","token":"444845","_route":"_wdt"},"request_uri":"http://dev.water-domination.com:8000/_wdt/444845","method":"GET"} []
+[2016-12-13 17:33:58] request.INFO: Matched route "{route}". {"route":"homepage","route_parameters":{"_controller":"AppBundle\\Controller\\DefaultController::indexAction","_route":"homepage"},"request_uri":"http://dev.water-domination.com:8000/","method":"GET"} []
+[2016-12-13 17:33:58] security.INFO: Populated the TokenStorage with an anonymous Token. [] []
+[2016-12-13 17:34:00] request.INFO: Matched route "{route}". {"route":"_wdt","route_parameters":{"_controller":"web_profiler.controller.profiler:toolbarAction","token":"fcefaf","_route":"_wdt"},"request_uri":"http://dev.water-domination.com:8000/_wdt/fcefaf","method":"GET"} []
