@@ -49,6 +49,7 @@ class DefaultController extends Controller
     /**
      * @Route("/users/{id}/{name}", name="get_one_user")
      * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function userView($id, $name)
     {
